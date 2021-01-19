@@ -1,12 +1,3 @@
-# aeb
-Another C++ Eventbus implementation.
-
-# Usage
-
-* To register for  event type `Event` just inherit from `public aeb::EventListener<Event>` and implement  `void handleEvent(const Event& event) override ` private.
-* To post event type `Event` call `aeb::postEvent<>(Event{1});`.
-
-```cpp
 #include <iostream>
 
 #include "eventbus.h"
@@ -45,11 +36,3 @@ int main() {
   aeb::postEvent<>(Event{1});
   aeb::postEvent<>(Event{2});
 }
-
-```
-
-# Notes:
-* Not thread safe!
-* Single context is created (static).
-* Polymorphic events are __NOT__ supported (yet?).
-* Synchronous dispatch only. 
