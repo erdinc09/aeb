@@ -22,10 +22,10 @@ add_library(aeb
 
 
 #example
-add_executable(example
+add_executable(aeb_example
     example/example.cpp)
-target_include_directories(example PRIVATE "eb")
-target_link_libraries(example aeb)
+target_include_directories(aeb_example PRIVATE "eb")
+target_link_libraries(aeb_example aeb)
 
 
 # tests
