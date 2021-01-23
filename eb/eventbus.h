@@ -2,6 +2,7 @@
 
 #include "eventbus_impl.h"
 #include "eventlistener.h"
+#include <algorithm>
 
 namespace aeb {
 
