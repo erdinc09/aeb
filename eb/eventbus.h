@@ -25,11 +25,11 @@ void postEvent(const Event& event) {
   auto listenersit =
       internal::EventBus_Impl::globalEventBus.instances.find(hash);
   if (listenersit != internal::EventBus_Impl::globalEventBus.instances.end()) {
-    std::for_each(
-        listenersit->second->begin(), listenersit->second->end(),
-        [&event](void* listener) {
-          static_cast<EventListener<Event>*>(listener)->handleEvent(event);
-        });
+    // listenersit->second => std::shared_ptr<std::vector<void*>>
+    auto& listenerListForEvent = *listenersit->second;
+    for (auto& listener : listenerListForEvent) {
+      static_cast<EventListener<Event>*>(listener)->handleEvent(event);
+    }
   }
 }
 
